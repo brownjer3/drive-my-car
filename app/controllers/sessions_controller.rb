@@ -6,7 +6,14 @@ class SessionController < ApplicationController
     end
 
     post "/login" do 
-
+        user = User.find_by(params[:user][:email])
+        if user && .authenticate([params[:user][:password])
+            session[:user_id] == user.id
+        else
+            #Raise an error here?
+            redirect "/login"
+        end
+        redirect "/home"
     end
 
     get "logout" do

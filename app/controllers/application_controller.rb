@@ -10,7 +10,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :home
+    erb :logged_out_home
+  end
+
+  get "/home" do
+    erb :logged_in_home
   end
 
 
