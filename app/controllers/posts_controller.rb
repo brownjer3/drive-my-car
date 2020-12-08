@@ -34,4 +34,4 @@ class PostsController < ApplicationController
     delete "/posts/:id/delete" do
       redirect "/posts"
     end
-  end
+end

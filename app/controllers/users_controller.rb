@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  # this class might not be needed unless i have time for users to view other user's profile pages
+
   # GET: /users
   get "/users" do
     erb :"/users/index.html"

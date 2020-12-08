@@ -1,0 +1,12 @@
+MVP
+- a user can login/logout
+    - validation
+- a user can view all posts (index of posts)
+- a user can view a specific post (show page)
+- a user can delete (only their) posts
+- a user can create new post
+
+Stretch 
+- bootstrap styling
+- (running) newsfeed on logged out homepage?
+- view list of users/specific users?
