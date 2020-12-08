@@ -17,6 +17,13 @@ class ApplicationController < Sinatra::Base
     erb :logged_in_home
   end
 
+  # #potential error route for any bad errors (regex)
+  # get "" do
+  #   erb :error
+  # end
 
+  helpers do
+    #should move the helpers from session_controller to here
+  end
 
 end
