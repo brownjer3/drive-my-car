@@ -7,6 +7,7 @@ MVP
 - a user can create new post
 
 Stretch 
+- break the user class into 2 groups -> posters/readers (polymorphic relationship)
 - bootstrap styling
 - (running) newsfeed on logged out homepage?
 - view list of users/specific users?
