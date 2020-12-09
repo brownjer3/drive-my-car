@@ -11,24 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201208005153) do
+ActiveRecord::Schema.define(version: 20201209222829) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "desc"
-    t.integer  "s_location"
-    t.integer  "e_location"
-    t.datetime "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.date     "end_date"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "user_id"
+    t.boolean  "public",     default: true, null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.integer  "location"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

@@ -3,9 +3,7 @@ class CreatePosts < ActiveRecord::Migration
     create_table :posts do |t|
       t.string :title
       t.text :desc
-      t.integer :s_location
-      t.integer :e_location
-      t.datetime :end_date
+      t.date :end_date
       t.timestamps null: false
     end
   end
