@@ -3,10 +3,10 @@
 <h2><%=@post.title%></h2>
 
 <p><%=@post.desc%></p>
-<p>Need to go from <%=@post.s_location%> to <%=@post.e_location%> by <%=@post.end_date.to_formatted_s(:long)%></p>
+<p>Needs to go from <%=@post.s_location%> to <%=@post.e_location%> by <%=@post.end_date.to_formatted_s(:long)%></p>
 
 
-<a href="/">Edit Post</a>
+<a href="/posts/<%=@post.id%>/edit">Edit Post</a>
 <br/>
 
 <form action="/posts/<%=@post.id%>/delete" method="POST" >

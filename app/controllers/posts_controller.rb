@@ -5,7 +5,6 @@ class PostsController < ApplicationController
       erb :"/posts/index"
     end
   
-    # GET: /posts/new
     get "/posts/new" do
       erb :"/posts/new"
     end
