@@ -1,39 +1,20 @@
 class UsersController < ApplicationController
 
-  # this class might not be needed unless i have time for users to view other user's profile pages
-
-  # GET: /users
-  get "/users" do
-    erb :"/users/index.html"
+  get "/signup" do 
+    erb :"users/new"
   end
 
-  # GET: /users/new
-  get "/users/new" do
-    erb :"/users/new.html"
+  post "/signup" do
+  # might want to add in an ActiveRecord VALIDATION for this step!
+  # user = User.find_or_create(params[:user])
+    if params[:user].values.all? {|v| valid?(v) } && !User.find_by(email: params[:user][:email])
+        user = User.create(params[:user])
+        session[:user_id] = user.id
+        redirect "/home"
+    else
+        #raise error here?
+        redirect "/signup"
+    end
   end
 
-  # POST: /users
-  post "/users" do
-    redirect "/users"
-  end
-
-  # GET: /users/5
-  get "/users/:id" do
-    erb :"/users/show.html"
-  end
-
-  # GET: /users/5/edit
-  get "/users/:id/edit" do
-    erb :"/users/edit.html"
-  end
-
-  # PATCH: /users/5
-  patch "/users/:id" do
-    redirect "/users/:id"
-  end
-
-  # DELETE: /users/5/delete
-  delete "/users/:id/delete" do
-    redirect "/users"
-  end
 end
