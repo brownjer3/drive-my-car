@@ -16,7 +16,6 @@ class PostsController < ApplicationController
       redirect "/posts/#{post.id}"
     end
   
-    # GET: /posts/5
     get "/posts/:id" do
       @post = Post.find(params[:id])
       erb :"/posts/show"
@@ -33,8 +32,9 @@ class PostsController < ApplicationController
       redirect "/posts/#{@post.id}"
     end
   
-    # DELETE: /posts/5/delete
     delete "/posts/:id/delete" do
+      @post = Post.find(params[:id])
+      @post.destroy
       redirect "/posts"
     end
 

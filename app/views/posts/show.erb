@@ -6,3 +6,10 @@
 <p>Need to go from <%=@post.s_location%> to <%=@post.e_location%> by <%=@post.end_date.to_formatted_s(:long)%></p>
 
 
+<a href="/">Edit Post</a>
+<br/>
+
+<form action="/posts/<%=@post.id%>/delete" method="POST" >
+    <input type="hidden" name="_method" value="DELETE" />
+    <input type="submit" value="Delete Post" />
+</form>
