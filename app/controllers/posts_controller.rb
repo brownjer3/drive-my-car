@@ -11,8 +11,8 @@ class PostsController < ApplicationController
     end
 
     post "/posts" do
-      post = Post.create(params[:post])
-      post.user = current_user
+      post = current_user.posts.build(params[:post])
+      post.save
       redirect "/posts/#{post.id}"
     end
   
@@ -43,5 +43,9 @@ class PostsController < ApplicationController
           redirect "/posts"
         end
       end
+
+      # def display_date
+      #   self.strftime(%D)
+      # end
 
 end
