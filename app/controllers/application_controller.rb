@@ -11,7 +11,7 @@ class ApplicationController < Sinatra::Base
   end
 
   before "/posts*" do
-    redirect_if_not_logged_in
+    login_check!
   end
 
   get "/", "/home" do
@@ -42,7 +42,7 @@ class ApplicationController < Sinatra::Base
   end
 
   private
-    def redirect_if_not_logged_in
+    def login_check!
       if !logged_in?
         redirect "/login"
       end
