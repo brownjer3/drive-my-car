@@ -22,25 +22,30 @@ class PostsController < ApplicationController
   
     get "/posts/:id/edit" do
       @post = Post.find(params[:id])
+      authorize!
       erb :"/posts/edit"
     end
   
     patch "/posts/:id" do
       @post = Post.find(params[:id])
-      redirect_if_unauthorized
+      authorize!
       @post.update(params[:post])
       redirect "/posts/#{@post.id}"
     end
   
     delete "/posts/:id/delete" do
       @post = Post.find(params[:id])
-      redirect_if_unauthorized
+      authorize!
       @post.destroy
       redirect "/posts"
     end
 
+    helpers do
+      
+    end
+
     private 
-      def redirect_if_unauthorized
+      def authorize!
         if @post.user != current_user
           redirect "/posts"
         end
