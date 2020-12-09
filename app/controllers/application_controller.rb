@@ -10,6 +10,10 @@ class ApplicationController < Sinatra::Base
     set :session_secret, ENV["SESSION_SECRET"]
   end
 
+  before "/posts*" do
+    redirect_if_not_logged_in
+  end
+
   get "/", "/home" do
     if logged_in? 
       erb :logged_in_home 
