@@ -38,4 +38,12 @@ class PostsController < ApplicationController
     delete "/posts/:id/delete" do
       redirect "/posts"
     end
+
+    private 
+      def redirect_if_unauthorized
+        if @post.user != current_user
+          redirect "/posts"
+        end
+      end
+
 end
