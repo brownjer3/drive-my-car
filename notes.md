@@ -15,3 +15,4 @@ Stretch
 - bootstrap styling
 - (running) newsfeed on logged out homepage?
 - view list of users/specific users?
+- popup after registration asking to share location & use that value as user.location
