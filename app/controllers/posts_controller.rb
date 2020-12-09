@@ -27,12 +27,14 @@ class PostsController < ApplicationController
   
     patch "/posts/:id" do
       @post = Post.find(params[:id])
+      redirect_if_unauthorized
       @post.update(params[:post])
       redirect "/posts/#{@post.id}"
     end
   
     delete "/posts/:id/delete" do
       @post = Post.find(params[:id])
+      redirect_if_unauthorized
       @post.destroy
       redirect "/posts"
     end
