@@ -22,14 +22,15 @@ class PostsController < ApplicationController
       erb :"/posts/show"
     end
   
-    # GET: /posts/5/edit
     get "/posts/:id/edit" do
+      @post = Post.find(params[:id])
       erb :"/posts/edit"
     end
   
-    # PATCH: /posts/5
     patch "/posts/:id" do
-      redirect "/posts/:id"
+      @post = Post.find(params[:id])
+      @post.update(params[:post])
+      redirect "/posts/#{@post.id}"
     end
   
     # DELETE: /posts/5/delete
