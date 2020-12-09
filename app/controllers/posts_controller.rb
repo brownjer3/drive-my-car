@@ -49,6 +49,10 @@ class PostsController < ApplicationController
         post.user == current_user ? "You" : post.user.name
       end
 
+      def display_date(date)
+        date.strftime("%B %d, %Y")
+      end
+      
     end
 
     private 
