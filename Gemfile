@@ -12,6 +12,7 @@ gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
 gem 'tux'
+gem 'dotenv', :require => 'dotenv/load'
 
 group :test do
   gem 'rspec'

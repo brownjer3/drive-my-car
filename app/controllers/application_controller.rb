@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, '???'
+    set :session_secret, ENV["SESSION_SECRET"]
   end
 
   get "/", "/home" do
@@ -17,11 +17,6 @@ class ApplicationController < Sinatra::Base
       erb :logged_out_home
     end
   end
-
-  # get "/home" do
-  #   redirect_if_not_logged_in
-  #   erb :logged_in_home
-  # end
 
   # #potential error route for any bad errors (regex)
   # get "" do
