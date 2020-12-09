@@ -6,3 +6,5 @@
         <%=@posts.index(post)+1%>. <a href="/posts/<%=post.id%>"> <%= post.title %></a> - <%= owner_name(post) %>
     </p>
 <% end %>
+
+<p><a href="/posts/new">Create Post</a></p>

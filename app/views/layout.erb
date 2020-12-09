@@ -15,6 +15,14 @@
   </head>
   <body>
     <div class="wrapper">
+    
+    <% if logged_in? %>
+      <div>
+        <a href="/posts">View all Posts</a>
+        <a href="/posts/new">Create Post</a>
+        <a href="/logout">Logout</a>
+      </div>
+    <% end %>
 
         <%= yield %>
 

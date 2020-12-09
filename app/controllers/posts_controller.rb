@@ -41,9 +41,9 @@ class PostsController < ApplicationController
     end
 
     helpers do
-      # def owner?
-      #   @post.user == current_user
-      # end
+      def owner?
+        @post.user == current_user
+      end
 
       def owner_name(post)
         post.user == current_user ? "You" : post.user.name
