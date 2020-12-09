@@ -41,7 +41,9 @@ class PostsController < ApplicationController
     end
 
     helpers do
-      
+      def owner?
+        @post.user == current_user
+      end
     end
 
     private 
