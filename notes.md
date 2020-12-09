@@ -9,6 +9,7 @@ MVP
 - 
 
 Stretch 
+- seed real data via Craigslist scrape
 - user location (some type of geolocation function)
 - break the user class into 2 groups -> posters/readers (polymorphic relationship)
 - bootstrap styling

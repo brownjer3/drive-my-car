@@ -6,15 +6,14 @@ class SessionController < ApplicationController
     end
 
     post "/login" do 
-        user = User.find_by(email: params[:email])
-        if user && user.authenticate([params:password])
-            session[:user_id] == user.id
+        if user = User.find_by(email: params[:email]) && user.authenticate([params:password])
+            session[:user_id] = user.id
+            redirect "/home"
         else
             #Raise an error here?
             redirect "/login"
         end
-        redirect "/home"
-    end
+    end 
 
     post "/logout" do
         session.clear
@@ -38,17 +37,4 @@ class SessionController < ApplicationController
         end
     end
 
-    helpers do
-        def valid?(param)
-            !param.strip.empty? && !param.nil?
-        end
-
-        def current_user
-            @current_user ||= User.find(session[:user_id]) if session[:user_id]
-        end
-
-        def logged_in?
-            !!current_user
-        end
-    end
 end

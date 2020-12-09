@@ -10,7 +10,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :logged_out_home
+    erb :logged_out_home 
   end
 
   get "/home" do
@@ -23,7 +23,17 @@ class ApplicationController < Sinatra::Base
   # end
 
   helpers do
-    #should move the helpers from session_controller to here
+    def valid?(param)
+        !param.strip.empty? && !param.nil?
+    end
+
+    def current_user
+        @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    end
+
+    def logged_in?
+        !!current_user
+    end
   end
 
 end

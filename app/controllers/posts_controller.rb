@@ -13,6 +13,8 @@ class PostsController < ApplicationController
   
     # POST: /posts
     post "/posts" do
+      # post = Post.new(params[:post])
+      # post.user_id = session[:user_id]
       redirect "/posts"
     end
   
