@@ -1,6 +1,7 @@
 require './config/environment'
 
 class ApplicationController < Sinatra::Base
+  register Sinatra::MultiRoute
 
   configure do
     set :public_folder, 'public'
@@ -9,13 +10,18 @@ class ApplicationController < Sinatra::Base
     set :session_secret, '???'
   end
 
-  get "/" do
-    erb :logged_out_home 
+  get "/", "/home" do
+    if logged_in? 
+      erb :logged_in_home 
+    else
+      erb :logged_out_home
+    end
   end
 
-  get "/home" do
-    erb :logged_in_home
-  end
+  # get "/home" do
+  #   redirect_if_not_logged_in
+  #   erb :logged_in_home
+  # end
 
   # #potential error route for any bad errors (regex)
   # get "" do
@@ -42,6 +48,5 @@ class ApplicationController < Sinatra::Base
         redirect "/login"
       end
     end
-
 
 end
