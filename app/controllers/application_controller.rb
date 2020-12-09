@@ -14,6 +14,10 @@ class ApplicationController < Sinatra::Base
     login_check!
   end
 
+  before "*/" do
+    route_failsafe
+  end
+
   get "/", "/home" do
     if logged_in? 
       erb :logged_in_home 
@@ -47,6 +51,10 @@ class ApplicationController < Sinatra::Base
       if !logged_in?
         redirect "/login"
       end
+    end
+
+    def route_failsafe
+      redirect "#{params[:splat].join}"
     end
 
 end
