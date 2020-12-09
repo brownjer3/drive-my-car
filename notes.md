@@ -12,7 +12,8 @@ Stretch
 - seed real data via Craigslist scrape
 - user location (some type of geolocation function)
 - break the user class into 2 groups -> posters/readers (polymorphic relationship)
-- bootstrap styling
+- bootstrap styling 
+    - card view for Post Index page
 - (running) newsfeed on logged out homepage?
 - view list of users/specific users?
 - popup after registration asking to share location & use that value as user.location

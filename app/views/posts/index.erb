@@ -1,6 +1,7 @@
 <h1>POSTS INDEX PAGE</h1>
 
-#with bootstrap, i can probably use some type of card template
+# with bootstrap, i can probably use some type of card template
+
 <% @posts.each do |post| %>
     <a href="/posts/<%=post.id%>" ><%= post.title %></a>
 <% end %>

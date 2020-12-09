@@ -1,32 +1,30 @@
 class PostsController < ApplicationController
 
-    # GET: /posts
     get "/posts" do
       @posts = Post.all
-      erb :"/posts/index.html"
+      erb :"/posts/index"
     end
   
     # GET: /posts/new
     get "/posts/new" do
-      erb :"/posts/new.html"
+      erb :"/posts/new"
     end
-  
-    # POST: /posts
+
     post "/posts" do
-      # post = Post.new(params[:post])
-      # post.user_id = session[:user_id]
-      redirect "/posts"
+      post = Post.create(params[:post])
+      post.user = current_user
+      redirect "/posts/#{post.id}"
     end
   
     # GET: /posts/5
     get "/posts/:id" do
       @post = Post.find(params[:id])
-      erb :"/posts/show.html"
+      erb :"/posts/show"
     end
   
     # GET: /posts/5/edit
     get "/posts/:id/edit" do
-      erb :"/posts/edit.html"
+      erb :"/posts/edit"
     end
   
     # PATCH: /posts/5
