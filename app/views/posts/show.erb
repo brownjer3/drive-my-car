@@ -1,7 +1,12 @@
 <h1>POST SHOW PAGE</h1>
 
 <h2><%=@post.title%></h2>
-<sub>Posted by <a href="/users/<%=@post.user.id%>" ><%=@post.user.name%></a> on <%=display_date(@post.created_at.to_date)%></sub>
+
+<% if !owner? %>
+    <sub>Posted by <a href="/users/<%=@post.user.id%>" ><%=@post.user.name%></a> on <%=display_date(@post.created_at.to_date)%></sub>
+<% else %>
+    <sub>You posted this on <%=display_date(@post.created_at.to_date)%></sub>
+<% end %>
 <h3>Car: <%=car_type(@post)%></h3>
 <br/>
 <br/>
@@ -14,7 +19,7 @@
 <br />
 
 <% if !owner? %>
-    <a href="mailto:<%=@post.user.email%>">Email <%=@post.user.name%></a>
+    <p>Interested? <a href="mailto:<%=@post.user.email%>">Email <%=@post.user.name%></a></p>
 <% end %>
 
 <% if owner? %> <!-- Post Owner access only -->

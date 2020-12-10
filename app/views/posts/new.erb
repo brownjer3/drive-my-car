@@ -7,11 +7,11 @@
     <div class='car_type'>
       <h2>Car Make: </h2><input type="text" name="post[car_make]" />
       <h2>Car Model: </h2><input type="text" name="post[car_model]" />
-      <h2>Car Year: </h2><input type="integer" name="post[car_year]" />
+      <h2>Car Year: </h2><input type="number" name="post[car_year]" />
     </div>
 
     <div class='locations'>
-      <h2>Where is your car? </h2><input type="text" name="post[origin]" />
+      <h2>Where is your car? </h2><input type="text" name="post[origin]" value="<%=current_user.location%>"/>
       <h2>Where does it need to be? </h2><input type="text" name="post[destination]" />
     </div>
 
