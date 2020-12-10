@@ -3,10 +3,10 @@
 
 <% @posts.each do |post| %>
     <p>
-        <%=@posts.index(post)+1%>. <a href="/posts/<%=post.id%>"> <%=owner_name(post)%> needs their <%="CAR TYPE"%> to go from <%="STARTING LOCATION"%> to <%="ENDING LOCATION"%></a> 
+        <%=@posts.index(post)+1%>. <a href="/posts/<%=post.id%>"> <%=owner_name(post)%> <%="CAR TYPE"%> to go from <%="STARTING LOCATION"%> to <%="ENDING LOCATION"%></a> 
         <br/>
         <sub>posted <%=time_since_post(post.created_at)%></sub>
     </p>
 <% end %>
 
-<p><a href="/posts/new">Create Post</a></p>
+<p><a href="/posts/new">Create Post</a></p> 

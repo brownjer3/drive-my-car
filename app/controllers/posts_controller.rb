@@ -46,14 +46,13 @@ class PostsController < ApplicationController
       end
 
       def owner_name(post)
-        post.user == current_user ? "You" : post.user.name
+        post.user == current_user ? "You need your" : "#{post.user.name} needs their"
       end
 
       def time_since_post(time)
         post_time = time.utc
         now = Time.now.utc
         diff_minutes = (now - post_time.to_time )/60
-        #need to update this to account for high hours (23 hours)
         if diff_minutes.between?(0,59)
           "#{diff_minutes.round} minutes ago"
         elsif diff_minutes.between?(60,1440)

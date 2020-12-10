@@ -24,18 +24,20 @@ class UsersController < ApplicationController
 
   get "/users/:id/edit" do
     @user = User.find(params[:id])
+    authorize!
     erb :"users/edit"
   end
 
   patch "/users/:id" do
     @user = User.find(params[:id])
+    authorize!
     @user.update(params[:user])
     redirect "users/#{@user.id}"
   end
 
   delete "/users/:id/delete" do
     @user = Post.find(params[:id])
-    # authorize!
+    authorize!
     #i might need to also delete all of this users posts?
     @user.destroy
     redirect "/"
@@ -47,6 +49,13 @@ class UsersController < ApplicationController
       @user == current_user
     end
 
+  end
+
+  private
+  def authorize!
+    if @user != current_user
+      redirect "/home"
+    end
   end
 
 end
