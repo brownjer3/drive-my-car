@@ -19,6 +19,10 @@ class ApplicationController < Sinatra::Base
     route_failsafe
   end
 
+  not_found do
+    'This is nowhere to be found.'
+  end
+
   get "/", "/home" do
     if logged_in?
       erb :logged_in_home 

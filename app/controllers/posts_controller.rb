@@ -73,6 +73,15 @@ class PostsController < ApplicationController
         end
       end
 
+      # def exists?
+      #   @post = Post.find(params[:id])
+      #   if @post
+      #     true
+      #   else
+      #     erb :error
+      #   end
+      # end
+
       # def display_date
       #   self.strftime(%D)
       # end
