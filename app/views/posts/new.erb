@@ -1,27 +1,56 @@
 <div class="wrapper">
 
-<h1>POST NEW FORM</h1>
+<h1 class="text-center">POST NEW FORM</h1>
 
 <form action="/posts" method="POST" >
-    <h2>Title: </h2><input type="text" name="post[title]" />
-    <h2>Description: </h2><input type="text" name="post[desc]" />
-
-    <div class='car_type'>
-      <h2>Car Make: </h2><input type="text" name="post[car_make]" />
-      <h2>Car Model: </h2><input type="text" name="post[car_model]" />
-      <h2>Car Year: </h2><input type="number" name="post[car_year]" />
+  <div class="row g-3">
+    <div class="col-md-12">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" name="post[title]" class="form-control" id="title">
     </div>
 
-    <div class='locations'>
-      <h2>Where is your car? </h2><input type="text" name="post[origin]" value="<%=current_user.location%>"/>
-      <h2>Where does it need to be? </h2><input type="text" name="post[destination]" />
+    <div class="col-md-12">
+      <label for="description" class="form-label">Description</label>
+      <input type="text" name="post[desc]" class="form-control" id="description">
     </div>
 
-    <h2>By when? </h2><input type="date" name="post[end_date]" />
-    <br/>
-    <br/>
-    <input type="radio" name="post[public]" value="true" checked /><p>Public</p>
-    <input type="radio" name="post[public]" value="false"/><p>Private</p>
+    <div class="col-md-5">
+      <label for="car_make" class="form-label">Make</label>
+      <input type="text" name="post[car_make]" class="form-control" id="car_make">
+    </div>
+    <div class="col-md-5">
+      <label for="car_model" class="form-label">Model</label>
+      <input type="text" name="post[car_model]" class="form-control" id="car_model">
+    </div>
+    <div class="col-md-2">
+      <label for="car_year" class="form-label">Year</label>
+      <input type="number" name="post[car_year]" class="form-control" id="car_year">
+    </div>
 
-    <input type="submit" value="Create Post"/>
+    <div class="col-md-5">
+      <label for="origin" class="form-label">Where is your car?</label>
+      <input type="text" name="post[origin]" class="form-control" id="origin" value="<%=current_user.location%>">
+    </div>
+    <div class="col-md-5">
+      <label for="destination" class="form-label">Where's it going?</label>
+      <input type="text" name="post[destination]" class="form-control" id="destination">
+    </div>
+    <div class="col-md-2">
+      <label for="end_date" class="form-label">By when?</label>
+      <input type="date" name="post[end_date]" class="form-control" id="end_date">
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="post[public]" id="public" value="true" checked>
+        <label class="form-check-label" for="public">Public</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="post[public]" id="private" value="false">
+        <label class="form-check-label" for="private">Private</label>
+      </div>
+    </div>
+      <input class="btn btn-primary" type="submit" value="Create Post"/>
+  </div>
 </form>
+
