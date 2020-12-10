@@ -15,11 +15,12 @@ class ApplicationController < Sinatra::Base
   end
 
   before "*/" do
+    pass if request.path_info == "/"
     route_failsafe
   end
 
   get "/", "/home" do
-    if logged_in? 
+    if logged_in?
       erb :logged_in_home 
     else
       erb :logged_out_home
