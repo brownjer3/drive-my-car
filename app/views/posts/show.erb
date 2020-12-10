@@ -1,7 +1,9 @@
 <h1>POST SHOW PAGE</h1>
 
 <h2><%=@post.title%></h2>
-
+<sub>Posted by <a href="/users/<%=@post.user.id%>" ><%=@post.user.name%></a></sub>
+<br/>
+<br/>
 <p><%=@post.desc%></p>
 <br/>
 <% if false %> <!--leaving this out until i figure out the date data stuff-->

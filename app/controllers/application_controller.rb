@@ -48,6 +48,10 @@ class ApplicationController < Sinatra::Base
     def logged_in?
         !!current_user
     end
+
+    def display_date(date)
+      date.strftime("%B %d, %Y")
+    end
     
   end
 

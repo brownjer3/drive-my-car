@@ -49,10 +49,6 @@ class PostsController < ApplicationController
         post.user == current_user ? "You" : post.user.name
       end
 
-      def display_date(date)
-        date.strftime("%B %d, %Y")
-      end
-
       def time_since_post(time)
         post_time = time.utc
         now = Time.now.utc

@@ -1,0 +1,10 @@
+<h1><%= @user.name %>'s Profile</h1>
+<sub>Member since: <%= display_date(@user.created_at) %></sub>
+
+<h5>Pending Posts: </h5>
+<% @user.posts.each do |post| %>
+    <p>
+        <%=@user.posts.index(post)+1%>. <a href="/posts/<%=post.id%>"> <%=post.title%></a> - posted on <%=display_date(post.created_at)%> 
+
+    </p>
+<% end %>
