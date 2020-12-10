@@ -3,12 +3,13 @@
 <br/>
 <sub>Member since: <%= display_date(@user.created_at) %></sub>
 
-<h5>Pending Posts: </h5>
-<% @user.posts.each do |post| %>
-    <p>
-        <%=@user.posts.index(post)+1%>. <a href="/posts/<%=post.id%>"> <%=post.title%></a> - posted on <%=display_date(post.created_at)%> 
-
-    </p>
+<% if active_posts? %>
+    <h5>Active Posts: </h5>
+    <% @user.posts.each do |post| %>
+        <p>
+            <%=@user.posts.index(post)+1%>. <a href="/posts/<%=post.id%>"> <%=post.title%></a> - posted on <%=display_date(post.created_at)%> 
+        </p>
+    <% end %>
 <% end %>
 
 <% if owner? %> <!-- Current_User access only -->

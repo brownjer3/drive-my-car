@@ -50,6 +50,10 @@ class UsersController < ApplicationController
       @user == current_user
     end
 
+    def active_posts?
+      !@user.posts.empty?
+    end
+
   end
 
   private
