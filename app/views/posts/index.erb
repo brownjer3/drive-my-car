@@ -3,7 +3,7 @@
 
 <% @posts.each do |post| %>
     <p>
-        <%=@posts.index(post)+1%>. <a href="/posts/<%=post.id%>"> <%= post.title %></a> - <%= owner_name(post) %>
+        <%=@posts.index(post)+1%>. <a href="/posts/<%=post.id%>"> <%= post.title %></a> posted by <%=owner_name(post)%> <%=time_since_post(post.created_at)%> ago
     </p>
 <% end %>
 

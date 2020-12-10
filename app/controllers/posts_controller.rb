@@ -52,8 +52,19 @@ class PostsController < ApplicationController
       def display_date(date)
         date.strftime("%B %d, %Y")
       end
-      
-    end
+
+      def time_since_post(time)
+        post_time = time.utc
+        now = Time.now.utc
+        if now.to_date.to_s == post_time.to_date.to_s
+          diff = (now - post_time.to_time )/60
+          "#{diff.round} minutes"
+        else 
+          diff = now.day - post_time.day
+          "#{diff} day(s)"
+          end
+        end
+      end
 
     private 
       def authorize!
