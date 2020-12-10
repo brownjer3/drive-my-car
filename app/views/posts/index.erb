@@ -5,7 +5,7 @@
     <p>
         <%=@posts.index(post)+1%>. <a href="/posts/<%=post.id%>"> <%=owner_name(post)%> needs their <%="CAR TYPE"%> to go from <%="STARTING LOCATION"%> to <%="ENDING LOCATION"%></a> 
         <br/>
-        <sub>posted <%=time_since_post(post.created_at)%> ago</sub>
+        <sub>posted <%=time_since_post(post.created_at)%></sub>
     </p>
 <% end %>
 

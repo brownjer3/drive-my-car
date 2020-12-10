@@ -54,13 +54,24 @@ class PostsController < ApplicationController
         now = Time.now.utc
         if now.to_date.to_s == post_time.to_date.to_s
           diff = (now - post_time.to_time )/60
-          "#{diff.round} minutes"
+          if diff.between?(0,59)
+            "#{diff.round} minutes ago"
+          else
+            "#{(diff/60).round} hours ago"
+          end
         else 
           diff = now.day - post_time.day
-          "#{diff} day(s)"
+          if diff.round == 1
+            "yesterday"
+          elsif diff.between?(1,30)
+          "#{diff} days ago"
+          else
+            months = now.month - post_time.month
+          "#{diff} month(s) ago"
           end
         end
       end
+    end
 
     private 
       def authorize!
@@ -76,10 +87,6 @@ class PostsController < ApplicationController
       #   else
       #     erb :error
       #   end
-      # end
-
-      # def display_date
-      #   self.strftime(%D)
       # end
 
 end
