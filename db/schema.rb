@@ -11,19 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201210180516) do
+ActiveRecord::Schema.define(version: 20201210183617) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "desc"
     t.date     "end_date"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "user_id"
-    t.boolean  "public",     default: true, null: false
+    t.boolean  "public",      default: true, null: false
     t.string   "car_make"
     t.string   "car_model"
     t.integer  "car_year"
+    t.string   "origin"
+    t.string   "destination"
   end
 
   create_table "users", force: :cascade do |t|

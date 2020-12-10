@@ -10,10 +10,11 @@
       <h2>Car Year: </h2><input type="integer" name="post[car_year]" />
     </div>
 
-<% if false %> <!--leaving this out until i figure out the date data stuff-->
-    <h2>Where is your car? </h2><input type="text" name="post[s_location]" />
-    <h2>Where does it need to be? </h2><input type="text" name="post[e_location]" />
-  <%end%>
+    <div class='locations'>
+      <h2>Where is your car? </h2><input type="text" name="post[origin]" />
+      <h2>Where does it need to be? </h2><input type="text" name="post[destination]" />
+    </div>
+
     <h2>By when? </h2><input type="date" name="post[end_date]" />
     <br/>
     <br/>
