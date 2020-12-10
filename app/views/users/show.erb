@@ -8,3 +8,12 @@
 
     </p>
 <% end %>
+
+<% if owner? %> <!-- Current_User access only -->
+    <a href="/users/<%=@user.id%>/edit">Edit Account</a>
+    <br/>
+    <form action="/users/<%=@user.id%>/delete" method="POST" >
+        <input type="hidden" name="_method" value="DELETE" />
+        <input type="submit" value="Delete Account" />
+    </form>
+<% end %>

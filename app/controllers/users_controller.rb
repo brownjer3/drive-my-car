@@ -22,4 +22,31 @@ class UsersController < ApplicationController
     erb :"users/show"
   end
 
+  get "/users/:id/edit" do
+    @user = User.find(params[:id])
+    erb :"users/edit"
+  end
+
+  patch "/users/:id" do
+    @user = User.find(params[:id])
+    @user.update(params[:user])
+    redirect "users/#{@user.id}"
+  end
+
+  delete "/users/:id/delete" do
+    @user = Post.find(params[:id])
+    # authorize!
+    #i might need to also delete all of this users posts?
+    @user.destroy
+    redirect "/"
+  end
+
+  helpers do
+
+    def owner?
+      @user == current_user
+    end
+
+  end
+
 end
