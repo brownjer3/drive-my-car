@@ -2,13 +2,18 @@
 
 <h1>POSTS INDEX PAGE</h1>
 
-
 <% @posts.each do |post| %>
-    <p>
-        <%=@posts.index(post)+1%>. <a href="/posts/<%=post.id%>"> <%=owner_name(post)%> <%=car_type(post)%> to go from <%=post.origin%> to <%=post.destination%></a> 
-        <br/>
-        <sub>posted <%=time_since_post(post.created_at)%></sub>
-    </p>
+
+    <div class="card w-75">
+        <div class="card-body">
+            <h5 class="card-title"><%=post.title%></h5>
+            <h6 class="card-subtitle mb-2 text-muted">posted <%=time_since_post(post.created_at)%></h6>
+            <p class="card-text"><%=owner_name(post)%> <%=car_type(post)%> to go from <%=post.origin%> to <%=post.destination%></p>
+            <a href="/posts/<%=post.id%>" class="btn btn-outline-primary">View Details</a>
+        </div>
+    </div>
+
+<br/>
 <% end %>
 
-<p><a href="/posts/new">Create Post</a></p> 
+<a class="btn btn-primary" href="/posts/new">Create Post</a>
