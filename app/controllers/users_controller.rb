@@ -36,11 +36,12 @@ class UsersController < ApplicationController
   end
 
   delete "/users/:id/delete" do
-    @user = Post.find(params[:id])
+    @user = User.find(params[:id])
     authorize!
-    #i might need to also delete all of this users posts?
+    @posts = @user.posts
+    destroy_posts
     @user.destroy
-    redirect "/"
+    redirect "/logout"
   end
 
   helpers do
@@ -56,6 +57,10 @@ class UsersController < ApplicationController
     if @user != current_user
       redirect "/home"
     end
+  end
+
+  def destroy_posts
+    @posts.each {|p| p.destroy}
   end
 
 end
