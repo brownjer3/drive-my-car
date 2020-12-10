@@ -52,23 +52,21 @@ class PostsController < ApplicationController
       def time_since_post(time)
         post_time = time.utc
         now = Time.now.utc
+        diff_minutes = (now - post_time.to_time )/60
         #need to update this to account for high hours (23 hours)
-        if now.to_date.to_s == post_time.to_date.to_s
-          diff = (now - post_time.to_time )/60
-          if diff.between?(0,59)
-            "#{diff.round} minutes ago"
-          else
-            "#{(diff/60).round} hours ago"
-          end
-        else 
-          diff = now.day - post_time.day
-          if diff.round == 1
+        if diff_minutes.between?(0,59)
+          "#{diff_minutes.round} minutes ago"
+        elsif diff_minutes.between?(60,1440)
+          "#{(diff_minutes/60).round} hours ago"
+        else
+          diff_days = now.day - post_time.day
+          if diff_days.round == 1
             "yesterday"
           elsif diff.between?(1,30)
-          "#{diff} days ago"
+            "#{diff} days ago"
           else
-            months = now.month - post_time.month
-          "#{diff} month(s) ago"
+              months = now.month - post_time.month
+            "#{diff} month(s) ago"
           end
         end
       end
