@@ -1,7 +1,10 @@
+<div class="wrapper">
+
 <h1><%= @user.name %>'s Profile</h1>
 <sub>Location: <%=@user.location%></sub>
 <br/>
 <sub>Member since: <%= display_date(@user.created_at) %></sub>
+<a href="/logout">Logout</a>
 
 <% if active_posts? %>
     <h5>Active Posts: </h5>

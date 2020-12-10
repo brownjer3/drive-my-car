@@ -11,30 +11,40 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
-    <div class="wrapper">
-    
-    <% if logged_in? %>
-      <div>
-        <a href="/home">Home</a>
-        <a href="/posts">View all Posts</a>
-        <a href="/posts/new">Need A Driver</a>
-        <a href="/posts/new">Need Wheels</a>
-        <a href="/users/<%=current_user.id%>">My Profile</a>
-        <a href="/logout">Logout</a>
+  <% if logged_in? %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/home">Drive My Car</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" href="/posts">View all Posts</a>
+            <a class="nav-link" href="/posts/new">Need A Driver</a>
+            <a class="nav-link" href="/posts/new">Need Wheels</a>
+            <a class="nav-link position-absolute top-50 end-0 translate-middle" href="/users/<%=current_user.id%>"><%=current_user.name%></a>
+          </div>
+        </div>
       </div>
-      <h1><%=current_user.name%></h1>
-    <% end %>
+    </nav>
+  <% end %>
 
         <%= yield %>
 
-      <footer class="branding">
-        <small>&copy; 2020 <strong>Made by <a href='https://github.com/brownjer3'>Jerry Brown</a></strong></small>
-      </footer>
     </div>
 
+    <nav class="navbar fixed-bottom navbar-light">
+      <div class="container-fluid">
+          <p>&copy; 2020 <strong>Made by <a href='https://github.com/brownjer3'>Jerry Brown</a></strong></p>
+      </div>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <!--[if lt IE 7]>
       <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>

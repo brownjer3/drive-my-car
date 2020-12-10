@@ -1,3 +1,4 @@
+<div class="wrapper">
 <h1>POSTS EDIT FORM</h1>
 
 <form action="/posts/<%=@post.id%>" method="POST" >
@@ -7,9 +8,9 @@
     <h2>Description: </h2><input type="text" name="post[desc]" value="<%= @post.desc%>"/>
     
     <div class='car_type'>
-      <h2>Car Make: </h2><input type="text" name="post[car_make]" value="post[car_make]"/>
-      <h2>Car Model: </h2><input type="text" name="post[car_model]" value="post[car_model]"/>
-      <h2>Car Year: </h2><input type="number" name="post[car_year]" value="post[car_year]"/>
+      <h2>Car Make: </h2><input type="text" name="post[car_make]" value="<%=@post.car_make%>"/>
+      <h2>Car Model: </h2><input type="text" name="post[car_model]" value="<%=@post.car_model%>"/>
+      <h2>Car Year: </h2><input type="number" name="post[car_year]" value="<%=@post.car_year%>"/>
     </div>
 
     <div class='locations'>
@@ -18,6 +19,10 @@
     </div>
 
     <h2>By when? </h2><input type="date" name="post[end_date]" value="<%= @post.end_date%>"/>
+    <br/>
+    <br/>
+    <input type="radio" name="post[public]" value="true" <%= "checked" if @post.public == true %> /><p>Public</p>
+    <input type="radio" name="post[public]" value="false"<%= "checked" if @post.public == false %>/><p>Private</p>
 
     <input type="submit" value="Edit" />
 </form>
