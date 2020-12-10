@@ -49,6 +49,10 @@ class PostsController < ApplicationController
         post.user == current_user ? "You need your" : "#{post.user.name} needs their"
       end
 
+      def car_type(post)
+        "#{post.car_year} #{post.car_make} #{post.car_model}"
+      end
+
       def time_since_post(time)
         post_time = time.utc
         now = Time.now.utc
