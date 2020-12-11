@@ -6,7 +6,7 @@
     <p class="card-text"><%=@post.desc%></p>
     <h6 class="card-title">Car: <%=car_type(@post)%></h6>
     <p class="card-text"><%=@post.origin%> -----> <%=@post.destination%> by <%=display_date(@post.end_date)%></p>
-    <a class="btn btn-primary" href="mailto:<%=@post.user.email%>">Email <%=@post.user.name%></a>
+
   </div>
     <div class="card-footer text-muted text-center">
     <% if !owner? %>
@@ -16,37 +16,19 @@
     <% end %>
   </div>
 </div>
-
-
-
-
-
-<% if false %>
-
-<h1>POST SHOW PAGE</h1>
-
-<h3>Car: <%=car_type(@post)%></h3>
 <br/>
-<br/>
-<p><%=@post.desc%></p>
-<br/>
-
-<p>Needs to get from <%=@post.origin%> to <%=@post.destination%> by <%=display_date(@post.end_date)%></p>
-
-<br />
-<br />
-
 <% if !owner? %>
-    <p>Interested? <a href="mailto:<%=@post.user.email%>">Email <%=@post.user.name%></a></p>
+    <a class="btn btn-outline-primary" href="mailto:<%=@post.user.email%>">Email <%=@post.user.name%></a>
+<% else %>
+    <div class="row">
+        <div class="col-md-2">
+            <a class="btn btn-outline-success" href="/posts/<%=@post.id%>/edit">Edit Post</a>
+        </div>
+        <div class="col-md-2">
+            <form action="/posts/<%=@post.id%>/delete" method="POST" >
+                <input type="hidden" name="_method" value="DELETE" />
+                <input class="btn btn-outline-danger" type="submit" value="Delete Post" />
+            </form>
+        </div>
+    </div>
 <% end %>
-
-<% if owner? %> <!-- Post Owner access only -->
-    <a href="/posts/<%=@post.id%>/edit">Edit Post</a>
-    <br/>
-    <form action="/posts/<%=@post.id%>/delete" method="POST" >
-        <input type="hidden" name="_method" value="DELETE" />
-        <input type="submit" value="Delete Post" />
-    </form>
-<% end %>
-
-<%end %>
