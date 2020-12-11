@@ -1,6 +1,43 @@
 <div class="wrapper">
+    <h1 class="text-center">Welcome</h1>
+    <form method="POST" action="/signup" >
+        <div class="row g-3">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" name="user[name]" class="form-control" id="name">
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" name="user[location]" class="form-control" id="location">
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="user[email]" class="form-control" id="email">
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="user[password]" class="form-control" id="password">
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <input class="btn btn-primary col-md-12" type="submit" value="Sign Up"/>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </form>
+    <br/>
+    <p class="text-center">Already signed up? <a href="/login">Login</a>
+</div>
 
-<h1>USER SIGN UP PAGE</h1>
+<% if false %>
 
 <form method="POST" action="/signup" >
 
@@ -15,3 +52,4 @@
 </form>
 <br />
 <p>Already signed up? <a href="/login" >Login</a>
+<% end %>
