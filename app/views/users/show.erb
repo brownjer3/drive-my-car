@@ -20,7 +20,7 @@
     <% else %>
         <h5 class="text-center"><%= @user.name %>'s Profile</h5>
     <% end %>
-    <small class="card-text text-muted">Location: <%=@user.location%></small>
+    <small class="card-text text-muted">City: <%=@user.location.city%></small>
     <br/>
     <small class="card-text text-muted">Member since: <%= display_date(@user.created_at) %></small>
   </div>

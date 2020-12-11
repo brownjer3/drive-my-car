@@ -4,11 +4,17 @@ class UsersController < ApplicationController
     erb :"users/new"
   end
 
+  # if !params[:figure][:name].empty?
+  #   Figure.create(params[:figure]).landmarks << @landmark
+  # end
+
   post "/signup" do
   # might want to add in an ActiveRecord VALIDATION for this step!
-  # user = User.find_or_create(params[:user])
-    if params[:user].values.all? {|v| valid?(v) } && !User.find_by(email: params[:user][:email])
-        user = User.create(params[:user])
+    if params[:user].values.all? {|v| valid?(v) } && !User.find_by(email: params[:user][:email]) && valid?(params[:location][:city])
+        user = User.new(params[:user])
+        
+        user.location = Location.find_or_create_by(params[:location])
+        user.save
         session[:user_id] = user.id
         redirect "/home"
     else
@@ -32,6 +38,9 @@ class UsersController < ApplicationController
   patch "/users/:id" do
     @user = User.find(params[:id])
     authorize!
+    
+    params[:user][:location] = Location.find_or_create_by(params[:location][:city])
+
     @user.update(params[:user])
     redirect "users/#{@user.id}"
   end

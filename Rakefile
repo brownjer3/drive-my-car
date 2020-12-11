@@ -10,4 +10,5 @@ end
 task 'clear_db' do
     User.destroy_all
     Post.destroy_all
+    Location.destroy_all
 end
