@@ -19,7 +19,8 @@ class UsersController < ApplicationController
 
   get "/users/:id" do
     @user = User.find(params[:id])
-    erb :"users/show"
+    @posts = @user.posts.reverse
+    erb :"users/show" 
   end
 
   get "/users/:id/edit" do

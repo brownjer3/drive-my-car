@@ -26,8 +26,8 @@
   </div>
   <div class="card-body">
     <% if active_posts? %>
-        <h5 class="card-title"><%=@user.posts.count%> Active Post(s)</h5>
-        <% @user.posts.each do |post| %>
+        <h5 class="card-title"><%=@posts.count%> Active Post(s)</h5>
+        <% @posts.each do |post| %>
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"><%=post.title%></h5>

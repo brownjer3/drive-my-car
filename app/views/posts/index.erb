@@ -33,7 +33,7 @@
                     <a href="/posts/<%=post.id%>" class="btn btn-outline-primary">View Details</a>
                 </div>
                 <div class="card-footer">
-                    <small>posted by <a href="/users/<%=post.user.id%>"><%=owner_name(post)%></a> <%=time_since_post(post.created_at)%></small>
+                    <small>posted by <strong><a style="text-decoration: none; color: inherit;" href="/users/<%=post.user.id%>"><%=owner_name(post)%></strong></a> <%=time_since_post(post.created_at)%></small>
                 </div>
             </div>
         </div>
