@@ -1,14 +1,25 @@
 <div class="wrapper">
-
-<h1> LOGIN FORM </h1>
-
-<form action="/login" method="POST">
-    <h3>Email: </h3><input type="email" name="email">
-    <h3>Password: </h3><input type="password" name="password">
-    <br />
-    <br />
-    <input type="submit" value="Login">
-</form>
-
-<br />
-<p>New here? <a href="/signup" >Sign up</a></p>
+    <h1 class="text-center">Welcome back</h1>
+        <form action="/login" method="POST">
+            <div class="row g-3">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" id="email">
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="password">
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <input class="btn btn-primary col-md-12" type="submit" value="Login"/>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </form>
+        <br/>
+        <p class="text-center">New here? <a href="/signup">Sign up</a></p>
