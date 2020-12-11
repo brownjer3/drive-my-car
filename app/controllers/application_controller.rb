@@ -53,8 +53,12 @@ class ApplicationController < Sinatra::Base
       date.strftime("%B %d, %Y")
     end
 
+    def short_date(date)
+      date.strftime("%D")
+    end
+
     def owner_name(post)
-      post.user == current_user ? "You need your" : "#{post.user.name} needs their"
+      post.user == current_user ? "you" : "#{post.user.name}"
     end
 
     def car_type(post)
