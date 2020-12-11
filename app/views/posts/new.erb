@@ -27,13 +27,13 @@
       <input type="number" name="post[car_year]" class="form-control" id="car_year">
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-4"> 
       <label for="origin" class="form-label">Where is your car?</label>
-      <input type="text" name="post[origin]" class="form-control" id="origin" value="<%=current_user.location%>">
+      <input type="text" name="origin[city]" class="form-control" id="origin" value="<%=current_user.location.city%>">
     </div>
     <div class="col-md-5">
       <label for="destination" class="form-label">Where's it going?</label>
-      <input type="text" name="post[destination]" class="form-control" id="destination">
+      <input type="text" name="destination[city]" class="form-control" id="destination">
     </div>
     <div class="col-md-3">
       <label for="end_date" class="form-label">By when?</label>

@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     authorize!
     
-    params[:user][:location] = Location.find_or_create_by(params[:location][:city])
+    params[:user][:location] = Location.find_or_create_by(params[:location])
 
     @user.update(params[:user])
     redirect "users/#{@user.id}"

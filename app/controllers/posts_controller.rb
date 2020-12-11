@@ -1,15 +1,17 @@
 class PostsController < ApplicationController
 
-    get "/posts", "/posts/" do
+    get "/posts" do
       @posts = Post.all.reverse
       erb :"/posts/index"
     end
   
     get "/posts/new" do
-      erb :"/posts/new"
+      erb :"/posts/new" 
     end
 
     post "/posts" do
+      params[:post][:origin] = Location.find_or_create_by(params[:origin])
+      params[:post][:destination] = Location.find_or_create_by(params[:destination])
       post = current_user.posts.build(params[:post])
       post.save
       redirect "/posts/#{post.id}"
@@ -29,6 +31,10 @@ class PostsController < ApplicationController
     patch "/posts/:id" do
       @post = Post.find(params[:id])
       authorize!
+
+      params[:post][:origin] = Location.find_or_create_by(params[:origin])
+      params[:post][:destination] = Location.find_or_create_by(params[:destination])
+
       @post.update(params[:post])
       redirect "/posts/#{@post.id}"
     end
