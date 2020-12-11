@@ -1,83 +1,57 @@
 <div class="wrapper">
-<h1>POSTS EDIT FORM</h1>
+  <h1 class="text-center">POSTS EDIT FORM</h1>
 
-<form action="/posts/<%=@post.id%>" method="POST" >
-    <input type="hidden" name="_method" value="PATCH" />
+  <form action="/posts/<%=@post.id%>" method="POST" >
+      <input type="hidden" name="_method" value="PATCH" />
 
-  <div class="row g-3">
-    <div class="col-md-12">
-      <label for="title" class="form-label">Title</label>
-      <input type="text" name="post[title]" class="form-control" id="title" value="<%= @post.title%>">
-    </div>
-
-    <div class="col-md-12">
-      <label for="description" class="form-label">Description</label>
-      <input type="text" name="post[desc]" class="form-control" id="description" value="<%= @post.desc%>">
-    </div>
-
-    <div class="col-md-5">
-      <label for="car_make" class="form-label">Car Make</label>
-      <input type="text" name="post[car_make]" class="form-control" id="car_make" value="<%=@post.car_make%>">
-    </div>
-    <div class="col-md-5">
-      <label for="car_model" class="form-label">Car Model</label>
-      <input type="text" name="post[car_model]" class="form-control" id="car_model" value="<%=@post.car_model%>">
-    </div>
-    <div class="col-md-2">
-      <label for="car_year" class="form-label">Car Year</label>
-      <input type="number" name="post[car_year]" class="form-control" id="car_year" value="<%=@post.car_year%>">
-    </div>
-
-    <div class="col-md-4">
-      <label for="origin" class="form-label">Where is your car?</label>
-      <input type="text" name="post[origin]" class="form-control" id="origin" value="<%= @post.origin%>">
-    </div>
-    <div class="col-md-5">
-      <label for="destination" class="form-label">Where's it going?</label>
-      <input type="text" name="post[destination]" class="form-control" id="destination" value="<%= @post.destination%>">
-    </div>
-    <div class="col-md-3">
-      <label for="end_date" class="form-label">By when?</label>
-      <input type="date" name="post[end_date]" class="form-control" id="end_date" value="<%= @post.end_date%>">
-    </div>
-
-    <div class="col-md-6">
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="post[public]" id="public" value="true" <%= "checked" if @post.public == true %>>
-        <label class="form-check-label" for="public">Public</label>
+    <div class="row g-3">
+      <div class="col-md-12">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" name="post[title]" class="form-control" id="title" value="<%= @post.title%>">
       </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="post[public]" id="private" value="false" <%= "checked" if @post.public == false %>>
-        <label class="form-check-label" for="private">Private</label>
+
+      <div class="col-md-12">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" name="post[desc]" class="form-control" id="description" value="<%= @post.desc%>">
       </div>
+
+      <div class="col-md-5">
+        <label for="car_make" class="form-label">Car Make</label>
+        <input type="text" name="post[car_make]" class="form-control" id="car_make" value="<%=@post.car_make%>">
+      </div>
+      <div class="col-md-5">
+        <label for="car_model" class="form-label">Car Model</label>
+        <input type="text" name="post[car_model]" class="form-control" id="car_model" value="<%=@post.car_model%>">
+      </div>
+      <div class="col-md-2">
+        <label for="car_year" class="form-label">Car Year</label>
+        <input type="number" name="post[car_year]" class="form-control" id="car_year" value="<%=@post.car_year%>">
+      </div>
+
+      <div class="col-md-4">
+        <label for="origin" class="form-label">Where is your car?</label>
+        <input type="text" name="post[origin]" class="form-control" id="origin" value="<%= @post.origin%>">
+      </div>
+      <div class="col-md-5">
+        <label for="destination" class="form-label">Where's it going?</label>
+        <input type="text" name="post[destination]" class="form-control" id="destination" value="<%= @post.destination%>">
+      </div>
+      <div class="col-md-3">
+        <label for="end_date" class="form-label">By when?</label>
+        <input type="date" name="post[end_date]" class="form-control" id="end_date" value="<%= @post.end_date%>">
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="post[public]" id="public" value="true" <%= "checked" if @post.public == true %>>
+          <label class="form-check-label" for="public">Public</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="post[public]" id="private" value="false" <%= "checked" if @post.public == false %>>
+          <label class="form-check-label" for="private">Private</label>
+        </div>
+      </div>
+        <input class="btn btn-primary" type="submit" value="Edit"/>
     </div>
-      <input class="btn btn-primary" type="submit" value="Edit"/>
-  </div>
 
-</form>
-
-
-
-<% if false %>
-    <h2>Title: </h2><input type="text" name="post[title]" value="<%= @post.title%>"/>
-    <h2>Description: </h2><input type="text" name="post[desc]" value="<%= @post.desc%>"/>
-    
-    <div class='car_type'>
-      <h2>Car Make: </h2><input type="text" name="post[car_make]" value="<%=@post.car_make%>"/>
-      <h2>Car Model: </h2><input type="text" name="post[car_model]" value="<%=@post.car_model%>"/>
-      <h2>Car Year: </h2><input type="number" name="post[car_year]" value="<%=@post.car_year%>"/>
-    </div>
-
-    <div class='locations'>
-        <h2>Where is your car? </h2><input type="text" name="post[origin]" value="<%= @post.origin%>"/>
-        <h2>Where does it need to be? </h2><input type="text" name="post[destination]" value="<%= @post.destination%>"/>
-    </div>
-
-    <h2>By when? </h2><input type="date" name="post[end_date]" value="<%= @post.end_date%>"/>
-    <br/>
-    <br/>
-    <input type="radio" name="post[public]" value="true" <%= "checked" if @post.public == true %> /><p>Public</p>
-    <input type="radio" name="post[public]" value="false"<%= "checked" if @post.public == false %>/><p>Private</p>
-
-    <input type="submit" value="Edit" />
-<%end%>
+  </form>

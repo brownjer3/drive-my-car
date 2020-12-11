@@ -1,14 +1,30 @@
 <div class="wrapper">
 
+<div class="card">
+  <h5 class="card-header"><%=@post.title%></h5>
+  <div class="card-body">
+    <p class="card-text"><%=@post.desc%></p>
+    <h6 class="card-title">Car: <%=car_type(@post)%></h6>
+    <p class="card-text"><%=@post.origin%> -----> <%=@post.destination%> by <%=display_date(@post.end_date)%></p>
+    <a class="btn btn-primary" href="mailto:<%=@post.user.email%>">Email <%=@post.user.name%></a>
+  </div>
+    <div class="card-footer text-muted text-center">
+    <% if !owner? %>
+        Posted by <a href="/users/<%=@post.user.id%>" ><%=@post.user.name%></a> on <%=display_date(@post.created_at.to_date)%>
+    <% else %>
+        You posted this on <%=display_date(@post.created_at.to_date)%>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+<% if false %>
+
 <h1>POST SHOW PAGE</h1>
 
-<h2><%=@post.title%></h2>
-
-<% if !owner? %>
-    <sub>Posted by <a href="/users/<%=@post.user.id%>" ><%=@post.user.name%></a> on <%=display_date(@post.created_at.to_date)%></sub>
-<% else %>
-    <sub>You posted this on <%=display_date(@post.created_at.to_date)%></sub>
-<% end %>
 <h3>Car: <%=car_type(@post)%></h3>
 <br/>
 <br/>
@@ -32,3 +48,5 @@
         <input type="submit" value="Delete Post" />
     </form>
 <% end %>
+
+<%end %>
