@@ -20,7 +20,7 @@ class ApplicationController < Sinatra::Base
   end
 
   not_found do
-    'This is nowhere to be found.'
+    erb :error
   end
 
   get "/", "/home" do
