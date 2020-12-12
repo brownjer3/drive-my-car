@@ -12,7 +12,9 @@ class PostsController < ApplicationController
     post "/posts" do
       params[:post][:origin] = Location.find_or_create_by(params[:origin])
       params[:post][:destination] = Location.find_or_create_by(params[:destination])
+
       post = current_user.posts.build(params[:post])
+      
       post.save
       redirect "/posts/#{post.id}"
     end

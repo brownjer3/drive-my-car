@@ -65,6 +65,10 @@ class ApplicationController < Sinatra::Base
       "#{post.car_year} #{post.car_make} #{post.car_model}"
     end
 
+    def location_options
+      Location.full_names
+    end
+
     def time_since_post(time)
       post_time = time.utc
       now = Time.now.utc

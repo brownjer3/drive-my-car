@@ -10,10 +10,9 @@ class UsersController < ApplicationController
 
   post "/signup" do
   # might want to add in an ActiveRecord VALIDATION for this step!
-    if params[:user].values.all? {|v| valid?(v) } && !User.find_by(email: params[:user][:email]) && valid?(params[:location][:city])
+    if params[:user].values.all? {|v| valid?(v) } && !User.find_by(email: params[:user][:email]) && valid?(params[:location])
         user = User.new(params[:user])
-        
-        user.location = Location.find_or_create_by(params[:location])
+        user.location = Location.find_or_create_by(location_details)
         user.save
         session[:user_id] = user.id
         redirect "/home"
@@ -77,4 +76,11 @@ class UsersController < ApplicationController
     @posts.each {|p| p.destroy}
   end
 
+  def location_details
+    location = {}
+    location[:city] = params[:location].split(", ").first
+    location[:state] = params[:location].split(", ").last
+    location
+  end
+  
 end
