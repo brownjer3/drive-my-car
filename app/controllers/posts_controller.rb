@@ -34,10 +34,8 @@ class PostsController < ApplicationController
     patch "/posts/:id" do
       @post = Post.find(params[:id])
       authorize!
-
-      params[:post][:origin] = Location.find_or_create_by(params[:origin])
-      params[:post][:destination] = Location.find_or_create_by(params[:destination])
-
+      params[:post][:origin] = Location.find_or_create_by(other_location_details(params[:origin]))
+      params[:post][:destination] = Location.find_or_create_by(other_location_details(params[:destination]))
       @post.update(params[:post])
       redirect "/posts/#{@post.id}"
     end
