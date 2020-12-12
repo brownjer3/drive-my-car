@@ -12,9 +12,13 @@
                 <div class="col-md-4"></div>
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
-
-                    <label for="location" class="form-label">City</label>
-                    <input type="text" name="location[city]" class="form-control" id="location" value="<%=@user.location.city%>">
+                    <label for="location" class="form-label">Location</label>
+                    <input list="locations" type="text" name="location" class="form-control" id="location" value="<%=@user.location.full_name%>">
+                    <datalist id="locations">
+                        <% location_options.each do |l| %>
+                            <option value='<%= l %>'>
+                        <% end %>
+                    </datalist>
                 </div>
                 <div class="col-md-4"></div>
                 <div class="col-md-4"></div>

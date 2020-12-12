@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     authorize!
     
-    params[:user][:location] = Location.find_or_create_by(params[:location])
+    params[:user][:location] = Location.find_or_create_by(location_details)
 
     @user.update(params[:user])
     redirect "users/#{@user.id}"
@@ -82,5 +82,5 @@ class UsersController < ApplicationController
     location[:state] = params[:location].split(", ").last
     location
   end
-  
+
 end

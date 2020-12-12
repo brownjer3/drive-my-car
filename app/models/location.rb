@@ -800,4 +800,8 @@ class Location < ActiveRecord::Base
         end
     end
 
+    def full_name
+        "#{city}, #{state}"
+    end
+
 end
