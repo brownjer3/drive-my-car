@@ -9,11 +9,9 @@ class UsersController < ApplicationController
   # end
 
   post "/signup" do
-  # might want to add in an ActiveRecord VALIDATION for this step!
     if params[:user].values.all? {|v| valid?(v) } && !User.find_by(email: params[:user][:email]) && valid?(params[:location])
-        user = User.new(params[:user])
-        user.location = Location.find_or_create_by(location_details)
-        user.save
+        params[:user][:location] = Location.find_or_create_by(location_details)
+        user = User.create(params[:user])
         session[:user_id] = user.id
         redirect "/home"
     else
@@ -37,9 +35,7 @@ class UsersController < ApplicationController
   patch "/users/:id" do
     @user = User.find(params[:id])
     authorize!
-    
     params[:user][:location] = Location.find_or_create_by(location_details)
-
     @user.update(params[:user])
     redirect "users/#{@user.id}"
   end
@@ -73,7 +69,7 @@ class UsersController < ApplicationController
   end
 
   def destroy_posts
-    @posts.each {|p| p.destroy}
+    @posts.destory_all
   end
 
 end
