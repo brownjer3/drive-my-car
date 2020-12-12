@@ -26,8 +26,11 @@
           <div class="navbar-nav">
             <a class="nav-link" href="/posts">View all Posts</a>
             <a class="nav-link" href="/posts/new">Need A Driver</a>
-            <a class="nav-link" href="/posts/new">Need Wheels</a>
-            <a class="nav-link position-absolute top-50 end-0 translate-middle" href="/users/<%=current_user.id%>"><%=current_user.name%></a>
+            <% if false %>
+              #Leaving this here to easily add in Need Wheels form/functionality
+              <a class="nav-link" href="/posts/new">Need Wheels</a>
+            <% end %>
+              <a class="nav-link position-absolute top-50 end-0 translate-middle" href="/users/<%=current_user.id%>"><%=current_user.name%></a>
           </div>
         </div>
       </div>
