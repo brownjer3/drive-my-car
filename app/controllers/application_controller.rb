@@ -25,6 +25,7 @@ class ApplicationController < Sinatra::Base
 
   get "/", "/home" do
     if logged_in?
+      @posts = Post.where(origin: current_user.location)
       erb :logged_in_home 
     else
       erb :logged_out_home
