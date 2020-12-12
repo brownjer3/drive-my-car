@@ -10,8 +10,9 @@ class PostsController < ApplicationController
     end
 
     post "/posts" do
-      params[:post][:origin] = Location.find_or_create_by(params[:origin])
-      params[:post][:destination] = Location.find_or_create_by(params[:destination])
+
+      params[:post][:origin] = Location.find_or_create_by(other_location_details(params[:origin]))
+      params[:post][:destination] = Location.find_or_create_by(other_location_details(params[:destination]))
 
       post = current_user.posts.build(params[:post])
       

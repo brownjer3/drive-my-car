@@ -76,11 +76,4 @@ class UsersController < ApplicationController
     @posts.each {|p| p.destroy}
   end
 
-  def location_details
-    location = {}
-    location[:city] = params[:location].split(", ").first
-    location[:state] = params[:location].split(", ").last
-    location
-  end
-
 end

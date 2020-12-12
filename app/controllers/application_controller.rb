@@ -89,6 +89,20 @@ class ApplicationController < Sinatra::Base
         end
       end
     end
+
+    def location_details
+      location = {}
+      location[:city] = params[:location].split(", ").first
+      location[:state] = params[:location].split(", ").last
+      location
+    end
+
+    def other_location_details(name)
+      location = {}
+      location[:city] = name.split(", ").first
+      location[:state] = name.split(", ").last
+      location
+    end
     
   end
 
