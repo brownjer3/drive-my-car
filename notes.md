@@ -10,12 +10,12 @@ MVP
 
 Stretch 
 - seed real data via Craigslist scrape ()
-- user location options...()
+- user location options...(X)
     - hardcode list of major US cities into the Post Model
     - some type of geolocation function
 - break the user class into 2 groups -> posters/readers (polymorphic relationship) ()
-- bootstrap styling ()
+- bootstrap styling (X)
     - card view for Post Index page
-- (running) newsfeed on logged out homepage? ()
+- (running) newsfeed on logged out homepage? (X)
 - view list of users/specific users? ()
 - popup after registration asking to share location & use that value as user.location ()

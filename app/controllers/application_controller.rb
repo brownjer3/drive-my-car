@@ -34,8 +34,8 @@ class ApplicationController < Sinatra::Base
       @posts = sort_by_recent(posts)
       erb :logged_in_home 
     else
-      #should account for post_date or something here
-      @posts = Post.where(public: true).limit(5)
+      posts = sort_by_recent(Post.where(public: true))
+      @posts = posts.take(5)
       erb :logged_out_home
     end
   end
@@ -90,10 +90,10 @@ class ApplicationController < Sinatra::Base
         if diff_days.round == 1
           "yesterday"
         elsif diff_days.between?(1,30)
-          "#{diff} days ago"
+          "#{diff_days} days ago"
         else
             months = now.month - post_time.month
-          "#{diff} month(s) ago"
+          "#{months} month(s) ago"
         end
       end
     end
