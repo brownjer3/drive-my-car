@@ -29,8 +29,9 @@ class ApplicationController < Sinatra::Base
 
   get "/", "/home" do
     if logged_in?
-      @posts = Post.where(origin: current_user.location)
-      @posts.concat(Post.all.select {|p| p.origin.state == current_user.location.state})
+      posts = Post.where(origin: current_user.location)
+      posts.concat(Post.all.select {|p| p.origin.state == current_user.location.state})
+      @posts = sort_by_recent(posts)
       erb :logged_in_home 
     else
       #should account for post_date or something here
@@ -117,5 +118,8 @@ class ApplicationController < Sinatra::Base
       redirect "#{params[:splat].join}"
     end
 
+    def sort_by_recent(posts)
+      posts.sort_by{|p| p.created_at}.reverse
+    end
 
 end
