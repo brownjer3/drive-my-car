@@ -1,4 +1,5 @@
 <div class="wrapper">
+<% if posts_nearby? %>
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
@@ -46,3 +47,10 @@
     </div>
     <br/>
     <% end %>
+<% else %>
+        <h1 class="text-center">No Posts in Your Area (yet)</h1>
+        <div class="d-flex justify-content-evenly">
+            <a class="btn btn-outline-primary" href="/posts">View All Posts</a>
+            <a class="btn btn-primary" href="/posts/new">Create a Post</a>
+        </div>
+<% end %>

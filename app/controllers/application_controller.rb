@@ -97,6 +97,10 @@ class ApplicationController < Sinatra::Base
         end
       end
     end
+
+    def posts_nearby?
+        !@posts.empty?
+    end
     
   end
 

@@ -18,4 +18,5 @@ class SessionController < ApplicationController
         redirect "/"
     end
 
+
 end
