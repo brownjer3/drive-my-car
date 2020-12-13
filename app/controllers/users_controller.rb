@@ -4,13 +4,10 @@ class UsersController < ApplicationController
     erb :"users/new"
   end
 
-  # if !params[:figure][:name].empty?
-  #   Figure.create(params[:figure]).landmarks << @landmark
-  # end
-
   post "/signup" do
-    if params[:user].values.all? {|v| valid?(v) } && !User.find_by(email: params[:user][:email]) && valid?(params[:location])
-        params[:user][:location] = Location.find_or_create_by(location_details)
+    if params[:user].values.all? {|v| valid?(v) } && new_user? && valid_location?(params[:location])
+        location = set_params(params[:location])
+        params[:user][:location] = Location.find_or_create_by(location)
         user = User.create(params[:user])
         session[:user_id] = user.id
         redirect "/home"
@@ -35,7 +32,8 @@ class UsersController < ApplicationController
   patch "/users/:id" do
     @user = User.find(params[:id])
     authorize!
-    params[:user][:location] = Location.find_or_create_by(location_details)
+    location = set_params(params[:location])
+    params[:user][:location] = Location.find_or_create_by(location)
     @user.update(params[:user])
     redirect "users/#{@user.id}"
   end
@@ -70,6 +68,10 @@ class UsersController < ApplicationController
 
   def destroy_posts
     @posts.destory_all
+  end
+
+  def new_user?
+    !User.find_by(email: params[:user][:email])
   end
 
 end

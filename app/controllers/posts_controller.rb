@@ -10,11 +10,18 @@ class PostsController < ApplicationController
     end
 
     post "/posts" do
-      params[:post][:origin] = Location.find_or_create_by(other_location_details(params[:origin]))
-      params[:post][:destination] = Location.find_or_create_by(other_location_details(params[:destination]))
-      post = current_user.posts.build(params[:post])
-      post.save
-      redirect "/posts/#{post.id}"
+      #add check for valid inputs
+      if params[:post].values.all? {|v| valid?(v)} && valid_location?(params[:origin]) && valid_location?(params[:destination])
+        origin = set_params(params[:origin])
+        destination = set_params(params[:destination])
+        params[:post][:origin] = Location.find_or_create_by(origin)
+        params[:post][:destination] = Location.find_or_create_by(destination)
+        post = current_user.posts.build(params[:post])
+        post.save
+        redirect "/posts/#{post.id}"
+      else
+        redirect "/posts/new"
+      end
     end
   
     get "/posts/:id" do
@@ -31,8 +38,10 @@ class PostsController < ApplicationController
     patch "/posts/:id" do
       @post = Post.find(params[:id])
       authorize!
-      params[:post][:origin] = Location.find_or_create_by(other_location_details(params[:origin]))
-      params[:post][:destination] = Location.find_or_create_by(other_location_details(params[:destination]))
+      origin = set_params(params[:origin])
+      destination = set_params(params[:destination])
+      params[:post][:origin] = Location.find_or_create_by(origin)
+      params[:post][:destination] = Location.find_or_create_by(destination)
       @post.update(params[:post])
       redirect "/posts/#{@post.id}"
     end
@@ -57,14 +66,5 @@ class PostsController < ApplicationController
           redirect "/posts"
         end
       end
-
-      # def exists?
-      #   @post = Post.find(params[:id])
-      #   if @post
-      #     true
-      #   else
-      #     erb :error
-      #   end
-      # end
 
 end

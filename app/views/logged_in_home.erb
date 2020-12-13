@@ -22,8 +22,9 @@
                     </p>
                     <a href="/posts/<%=post.id%>" class="btn btn-outline-<%= post.user == current_user ? "success" : "primary" %>">View Details</a>
                 </div>
-                <div class="card-footer <%=post.user == current_user ? "text-white bg-success" : "text-muted"%>">
-                    <small>posted by <strong><a style="text-decoration: none; color: inherit;" href="/users/<%=post.user.id%>"><%=owner_name(post)%></strong></a> <%=time_since_post(post.created_at)%></small>
+                <div class="card-footer d-flex justify-content-between <%=post.user == current_user ? "text-white bg-success" : "text-muted"%>">
+                    <small>Posted by <strong><a style="text-decoration: none; color: inherit;" href="/users/<%=post.user.id%>"><%=owner_name(post)%></strong></a> <%=time_since_post(post.created_at)%></small>
+                    <small><%=post.public ? "Public" : "Private"%></small>
                 </div>
             </div>
         </div>

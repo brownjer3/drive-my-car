@@ -26,12 +26,13 @@
                 <%=@post.destination.city%> by <%=display_date(@post.end_date)%>
             </p>
         </div>
-        <div class="card-footer text-muted text-center">
+        <div class="card-footer text-muted d-flex justify-content-between">
             <% if !owner? %>
-                Posted by <strong><a style="text-decoration: none; color: inherit;" href="/users/<%=@post.user.id%>" ><%=@post.user.name%></a></strong> on <%=display_date(@post.created_at.to_date)%>
+                <small>Posted by <strong><a style="text-decoration: none; color: inherit;" href="/users/<%=@post.user.id%>" ><%=@post.user.name%></a></strong> on <%=display_date(@post.created_at.to_date)%></small>
             <% else %>
-                You posted this on <%=display_date(@post.created_at.to_date)%>
+                <small>You posted this on <%=display_date(@post.created_at.to_date)%></small>
             <% end %>
+            <small><%=@post.public ? "Public" : "Private"%></small>
         </div> 
     </div>
 

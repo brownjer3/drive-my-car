@@ -14,6 +14,10 @@ class ApplicationController < Sinatra::Base
     login_check!
   end
 
+  before "/users*" do
+    login_check!
+  end
+
   before "*/" do
     pass if request.path_info == "/"
     route_failsafe
@@ -28,18 +32,19 @@ class ApplicationController < Sinatra::Base
       @posts = Post.where(origin: current_user.location)
       erb :logged_in_home 
     else
+      #should account for post_date or something here
+      @posts = Post.where(public: true).limit(5)
       erb :logged_out_home
     end
   end
 
-  # #potential error route for any bad errors (regex)
-  # get "" do
-  #   erb :error
-  # end
-
   helpers do
     def valid?(param)
         !param.strip.empty? && !param.nil?
+    end
+
+    def valid_location?(param)
+      valid?(param) && param.include?(", ")
     end
 
     def current_user
@@ -67,7 +72,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def location_options
-      Location.full_names
+      Location.major_cities
     end
 
     def time_since_post(time)
@@ -82,7 +87,7 @@ class ApplicationController < Sinatra::Base
         diff_days = now.day - post_time.day
         if diff_days.round == 1
           "yesterday"
-        elsif diff.between?(1,30)
+        elsif diff_days.between?(1,30)
           "#{diff} days ago"
         else
             months = now.month - post_time.month
@@ -91,17 +96,10 @@ class ApplicationController < Sinatra::Base
       end
     end
 
-    def location_details
+    def set_params(location_details)
       location = {}
-      location[:city] = params[:location].split(", ").first
-      location[:state] = params[:location].split(", ").last
-      location
-    end
-
-    def other_location_details(name)
-      location = {}
-      location[:city] = name.split(", ").first
-      location[:state] = name.split(", ").last
+      location[:city] = location_details.split(", ").first
+      location[:state] = location_details.split(", ").last
       location
     end
     
@@ -117,5 +115,6 @@ class ApplicationController < Sinatra::Base
     def route_failsafe
       redirect "#{params[:splat].join}"
     end
+
 
 end
