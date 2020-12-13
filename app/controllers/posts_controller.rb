@@ -10,7 +10,6 @@ class PostsController < ApplicationController
     end
 
     post "/posts" do
-      #add check for valid inputs
       if params[:post].values.all? {|v| valid?(v)} && valid_location?(params[:origin]) && valid_location?(params[:destination])
         origin = set_params(params[:origin])
         destination = set_params(params[:destination])

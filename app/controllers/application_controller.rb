@@ -30,6 +30,7 @@ class ApplicationController < Sinatra::Base
   get "/", "/home" do
     if logged_in?
       @posts = Post.where(origin: current_user.location)
+      @posts.concat(Post.all.select {|p| p.origin.state == current_user.location.state})
       erb :logged_in_home 
     else
       #should account for post_date or something here
