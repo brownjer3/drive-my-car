@@ -1,60 +1,41 @@
 <div class="wrapper">
-
     <h1 class="text-center">Edit Your Info</h1>
-        <form action="/users/<%=@user.id%>" method="POST" >
-            <input type="hidden" name="_method" value="PATCH" />
-            <div class="row g-3">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" name="user[name]" class="form-control" id="name" value="<%=@user.name%>">
-                </div>
-                <div class="col-md-4"></div>
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <label for="location" class="form-label">Location</label>
-                    <input list="locations" type="text" name="location" class="form-control" id="location" value="<%=@user.location.full_name%>">
-                    <datalist id="locations">
-                        <% location_options.each do |l| %>
-                            <option value='<%= l %>'>
-                        <% end %>
-                    </datalist>
-                </div>
-                <div class="col-md-4"></div>
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" name="user[email]" class="form-control" id="email" value="<%=@user.email%>">
-                </div>
-                <div class="col-md-4"></div>
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" name="user[password]" class="form-control" id="password">
-                </div>
-                <div class="col-md-4"></div>
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <input class="btn btn-primary col-md-12" type="submit" value="Update"/>
-                </div>
-                <div class="col-md-4"></div>
+    <form action="/users/<%=@user.id%>" method="POST" >
+        <input type="hidden" name="_method" value="PATCH" />
+        <div class="row g-3">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" name="user[name]" class="form-control" id="name" value="<%=@user.name%>">
             </div>
-        </form>
-
-
-
-<% if false %>
-
-<form action="/users/<%=@user.id%>" method="POST" >
-    <input type="hidden" name="_method" value="PATCH" />
-
-    <h3>Name: </h3><input type="text" name="user[name]" value="<%=@user.name%>"/>
-    <h3>Location: </h3><input type="text" name="user[location]" value="<%=@user.location%>"/>
-    <h3>Email: </h3><input type="email" name="user[email]" value="<%=@user.email%>"/> 
-    <h3>Password: </h3><input type="password" name="user[password]" /> 
-    <br />
-    <br />
-    <input type="submit" value="Update" > 
-
-</form>
-<%end%>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <label for="location" class="form-label">Location</label>
+                <input list="locations" type="text" name="location" class="form-control" id="location" value="<%=@user.location.full_name%>">
+                <datalist id="locations">
+                    <% location_options.each do |l| %>
+                        <option value='<%= l %>'>
+                    <% end %>
+                </datalist>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="user[email]" class="form-control" id="email" value="<%=@user.email%>">
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="user[password]" class="form-control" id="password">
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <input class="btn btn-primary col-md-12" type="submit" value="Update"/>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </form>

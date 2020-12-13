@@ -12,7 +12,6 @@ class UsersController < ApplicationController
         session[:user_id] = user.id
         redirect "/home"
     else
-        #raise error here?
         redirect "/signup"
     end
   end

@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
     get "/posts" do
-      @posts = Post.all.reverse
+      @posts = sort_by_recent(Post.all)
       erb :"/posts/index"
     end
   
@@ -56,7 +56,6 @@ class PostsController < ApplicationController
       def owner?
         @post.user == current_user
       end
-
     end
 
     private 

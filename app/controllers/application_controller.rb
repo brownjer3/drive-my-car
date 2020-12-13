@@ -31,7 +31,7 @@ class ApplicationController < Sinatra::Base
     if logged_in?
       posts = Post.where(origin: current_user.location)
       posts.concat(Post.all.select {|p| p.origin.state == current_user.location.state})
-      @posts = sort_by_recent(posts)
+      @posts = sort_by_recent(posts).uniq
       erb :logged_in_home 
     else
       posts = sort_by_recent(Post.where(public: true))
@@ -97,13 +97,6 @@ class ApplicationController < Sinatra::Base
         end
       end
     end
-
-    def set_params(location_details)
-      location = {}
-      location[:city] = location_details.split(", ").first
-      location[:state] = location_details.split(", ").last
-      location
-    end
     
   end
 
@@ -120,6 +113,13 @@ class ApplicationController < Sinatra::Base
 
     def sort_by_recent(posts)
       posts.sort_by{|p| p.created_at}.reverse
+    end
+
+    def set_params(location_details)
+      location = {}
+      location[:city] = location_details.split(", ").first
+      location[:state] = location_details.split(", ").last
+      location
     end
 
 end

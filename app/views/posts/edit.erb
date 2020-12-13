@@ -1,20 +1,16 @@
 <div class="wrapper">
-  <h1 class="text-center">POSTS EDIT FORM</h1>
-
+  <h1 class="text-center">Edit Post</h1>
   <form action="/posts/<%=@post.id%>" method="POST" >
       <input type="hidden" name="_method" value="PATCH" />
-
     <div class="row g-3">
       <div class="col-md-12">
         <label for="title" class="form-label">Title</label>
         <input type="text" name="post[title]" class="form-control" id="title" value="<%= @post.title%>">
       </div>
-
       <div class="col-md-12">
         <label for="description" class="form-label">Description</label>
         <input type="text" name="post[desc]" class="form-control" id="description" value="<%= @post.desc%>">
       </div>
-
       <div class="col-md-5">
         <label for="car_make" class="form-label">Car Make</label>
         <input type="text" name="post[car_make]" class="form-control" id="car_make" value="<%=@post.car_make%>">
@@ -27,9 +23,7 @@
         <label for="car_year" class="form-label">Car Year</label>
         <input type="number" name="post[car_year]" class="form-control" id="car_year" value="<%=@post.car_year%>">
       </div>
-
       <div class="col-md-4">
-
         <label for="origin" class="form-label">Where is your car?</label>
         <input list="locations" type="text" name="origin" class="form-control" id="origin" value="<%=@post.origin.full_name%>">
           <datalist id="locations">
@@ -37,10 +31,8 @@
                   <option value='<%= l %>'>
               <% end %>
           </datalist>
-
       </div>
       <div class="col-md-5">
-
       <label for="destination" class="form-label">Where's it going?</label>
       <input list="locations" type="text" name="destination" class="form-control" id="destination" value="<%=@post.destination.full_name%>">
         <datalist id="locations">
@@ -48,13 +40,11 @@
                 <option value='<%= l %>'>
             <% end %>
         </datalist>
-
       </div>
       <div class="col-md-3">
         <label for="end_date" class="form-label">By when?</label>
         <input type="date" name="post[end_date]" class="form-control" id="end_date" value="<%= @post.end_date%>">
       </div>
-
       <div class="col-md-6">
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" name="post[public]" id="public" value="true" <%= "checked" if @post.public == true %>>
@@ -67,5 +57,4 @@
       </div>
         <input class="btn btn-primary" type="submit" value="Edit"/>
     </div>
-
   </form>

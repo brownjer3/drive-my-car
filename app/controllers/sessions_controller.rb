@@ -9,7 +9,6 @@ class SessionController < ApplicationController
             session[:user_id] = user.id
             redirect "/home"
         else
-            #Raise an error here?
             redirect "/login"
         end
     end 
