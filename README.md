@@ -21,4 +21,7 @@ Once you've completed the setup...
 * Submit, edit, delete a post
 * Edit, delete your account
 
+# Collaborating
+Pull Requests are welcome on GitHub. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
+
 
