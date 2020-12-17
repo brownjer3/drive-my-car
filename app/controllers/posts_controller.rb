@@ -10,11 +10,12 @@ class PostsController < ApplicationController
     end
 
     post "/posts" do
-      if params[:post].values.all? {|v| valid?(v)} && valid_location?(params[:origin]) && valid_location?(params[:destination])
-        origin = set_params(params[:origin])
-        destination = set_params(params[:destination])
-        params[:post][:origin] = Location.find_or_create_by(origin)
-        params[:post][:destination] = Location.find_or_create_by(destination)
+      #if params[:post].values.all? {|v| valid?(v)} #&& valid_location?(params[:post][:origin_attributes]) && valid_location?(params[:post][:destination_attributes])
+      if true
+        # origin = set_params(params[:origin])
+        # destination = set_params(params[:destination])
+        # params[:post][:origin] = Location.find_or_create_by(origin)
+        # params[:post][:destination] = Location.find_or_create_by(destination)
         post = current_user.posts.build(params[:post])
         post.save
         redirect "/posts/#{post.id}"

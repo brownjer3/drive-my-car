@@ -24,7 +24,7 @@
       </div>
       <div class="col-md-4"> 
         <label for="origin" class="form-label">Where is your car?</label>
-        <input list="locations" type="text" name="origin" class="form-control" id="origin" value="<%=current_user.location.full_name%>">
+        <input list="locations" type="text" name="post[location_attributes][origin]" class="form-control" id="origin" value="<%=current_user.location.full_name%>">
           <datalist id="locations">
               <% location_options.each do |l| %>
                   <option value='<%= l %>'>
@@ -33,7 +33,7 @@
       </div>
       <div class="col-md-5">
         <label for="destination" class="form-label">Where's it going?</label>
-        <input list="locations" type="text" name="destination" class="form-control" id="destination">
+        <input list="locations" type="text" name="post[location_attributes][destination]" class="form-control" id="destination">
           <datalist id="locations">
               <% location_options.each do |l| %>
                   <option value='<%= l %>'>
